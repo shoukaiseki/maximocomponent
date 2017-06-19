@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* Licensed Materials - Property of IBM
+* Restricted Materials of IBM
+* 5724-U18
+* (C) COPYRIGHT IBM CORP. 2006,2010 All Rights Reserved.
+* US Government Users Restricted Rights - Use, duplication or
+* disclosure restricted by GSA ADP Schedule Contract with
+* IBM Corp.
+-->
+<!-- basedir 路径名必须为 webclient\components -->
+<component-registry basedir="webclient\components"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation='../component-registry.xsd'
+	>
+	<component-descriptor name="iframejsp">
+		<property-list>
+			<property name="jsp-filename">
+				<default-value>iframejsp/iframejsp</default-value>
+			</property>
+			<property name="defaultrender">
+				<default-value>true</default-value>
+			</property>
+			<property name="width">
+				<default-value>99%</default-value>
+				<flag name="global"/>
+			</property>
+			<property name="height">
+				<default-value>1000px</default-value>
+				<flag name="global"/>
+			</property>
+			<property name="id">
+				<flag name="final" />
+			</property>
+			<property name="visible">
+				<default-value>true</default-value>
+			</property>
+			<property name="iframesrc">
+			</property>
+			<property name="includejsp">
+				<default-value>samples.jsp</default-value>
+			</property>
+			<property name="cssclass" />
+		</property-list>
+	</component-descriptor>
+
+</component-registry>

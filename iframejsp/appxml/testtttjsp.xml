@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<presentation id="testttt" ismobile="false" mboname="TESTBSHT" resultstableid="results_showlist" version="6.0.0" > 
+  <page id="mainrec" scroll="false" height="100%" label="ASUS"> 
+	  <!--
+    <include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>  
+-->
+    <clientarea id="clientarea" height="100%"> 
+					<section id="2497536816057"  height="100%">
+						<iframejsp id="iframejsp_001" width="100%" height="pageheight" includejsp="../../tuuyou/test.jsp"/>
+					</section>
+    </clientarea>  
+  </page>  
+</presentation>
+
+
+
+
+
+
+
+

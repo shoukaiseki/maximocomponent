@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* Licensed Materials - Property of IBM
+* Restricted Materials of IBM
+* 5724-U18
+* (C) COPYRIGHT IBM CORP. 2006,2011 All Rights Reserved.
+* US Government Users Restricted Rights - Use, duplication or
+* disclosure restricted by GSA ADP Schedule Contract with
+* IBM Corp.
+-->
+<control-registry basedir="webclient\controls" package="psdi.webclient.controls" 
+	xsi:noNamespaceSchemaLocation='../control-registry.xsd'
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<!--tuuyoujsp-->
+	<control-descriptor name="iframejsp">
+		<property-list>
+			<property name="classname" />
+			<property name="display">
+				<default-value>true</default-value>
+				<flag name="global" />
+			</property>
+			<property name="width">
+				<default-value>99%</default-value>
+			</property>
+			<property name="height">
+				<default-value>1000px</default-value>
+			</property>
+			<property name="modulename">
+				<flag name="global" />
+			</property>
+			<property name="includejsp">
+				<default-value>samples.jsp</default-value>
+			</property>
+			<property name="iframesrc">
+			</property>
+			<property name="id">
+				<flag name="final" />
+			</property>
+			
+			
+		</property-list>
+		<component-list>
+			<components id="${name}_components_v" layout="vertical" hidewhen="@{hidewhen}">
+				<components id="${name}_components_h" layout="horizontal">
+					<iframejsp id="${name}_tuuyou" cssclass="@{classname}" includejsp="@{includejsp}" iframesrc="@{iframesrc}"  width="@{width}" height="@{height}"/>
+				</components>
+			</components>
+		</component-list>
+		<containers>
+			<container name="tab" />
+			<container name="section" />
+			<container name="pag" />
+		</containers>
+	</control-descriptor>
+	<!--tuuyoujsp-->
+</control-registry>
