@@ -13,3 +13,6 @@ class 类由 kotlin编写
 		</buttongroup>
 	</dialog>
 ```
+### 页面引用
+在页面中增加按钮,事件设置为 importexcle 就好
+例子中不做保存,只进行了文件内容输出

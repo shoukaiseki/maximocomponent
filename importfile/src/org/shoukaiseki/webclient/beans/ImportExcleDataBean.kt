@@ -27,12 +27,14 @@ class ImportExcleDataBean : DataBean() {
 
             val mboSet=this.app.appBean.mboSet
             log.debug("mboname="+mboSet.name)
+            println("mboname="+mboSet.name)
 
             var fileContent = ""
 
             try {
                 fileContent = file.fileOutputStream.toString("UTF-8")
                 log.debug("fileContent=$fileContent")
+                println("fileContent=$fileContent")
             } catch (var6: UnsupportedEncodingException) {
                 log.debug("Unsupported encoding exception!!!")
                 var6.printStackTrace()
@@ -66,6 +68,7 @@ class ImportExcleDataBean : DataBean() {
 
         return 1
     }
+    /**
     @Throws(MXException::class, RemoteException::class)
      fun execute1(): Int {
         if (!this.clientSession.hasLongOpStarted()) {
@@ -116,4 +119,5 @@ class ImportExcleDataBean : DataBean() {
 
         return 1
     }
+    **/
 }
