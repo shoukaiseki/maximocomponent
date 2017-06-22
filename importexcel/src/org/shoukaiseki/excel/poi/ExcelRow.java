@@ -2,7 +2,12 @@ package org.shoukaiseki.excel.poi;
 
 
 
+import psdi.mbo.MboRemote;
+import psdi.util.MXApplicationException;
+import psdi.util.MXException;
+
 import java.math.BigDecimal;
+import java.rmi.RemoteException;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +40,15 @@ public class ExcelRow extends LinkedHashMap {
 
     public void setTable(ExcelTable table) {
         this.table = table;
+    }
+
+
+    public Boolean getBoolean(Object colname){
+        Object value=get(colname);
+        if(value instanceof Boolean){
+            return (Boolean)get(colname);
+        }
+       return Boolean.parseBoolean(getString(colname));
     }
 
     public String getString(Object colname){
@@ -128,6 +142,33 @@ public class ExcelRow extends LinkedHashMap {
         }else{
             return get(attName.toUpperCase()).toString().isEmpty();
         }
+    }
+
+    /**
+     * Set value.
+     *
+     * @param mbo
+     *         要设置值得字段名
+     * @param mboattname
+     *         mbo 中的字段名
+     * @param value
+     *         要设置的值
+     * @param l
+     *         mbo.setValue 的 第三个参数
+     */
+    public void setValue(MboRemote mbo,String mboattname,Object value,long l) throws MXApplicationException {
+        String mboname=null;
+            try {
+                mboname=mbo.getName();
+                if(value instanceof  String){
+                    mbo.setValue(mboattname,((String) value).toString(),l);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                MessageFormat fmt = new MessageFormat("字段{0}设置值出错:{1}", Locale.getDefault());
+                Object[] params={mboattname,e.getMessage()};
+                throw new MXApplicationException(mboname,fmt.format(params));
+            }
     }
 
 }

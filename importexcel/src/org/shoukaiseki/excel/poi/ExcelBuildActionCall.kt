@@ -11,6 +11,12 @@ import java.rmi.RemoteException
 
 interface ExcelBuildActionCall {
 
+    /**
+     *  初始化excel表格数据列配置 位于哪个 sheet ,标题行数为几行
+     *  <br>
+     *  第一个 sheet 位置为0
+     *
+     */
     fun initialConfigure():ExcelBuildConfig
 
     //结束触发,返回表集合

@@ -44,8 +44,8 @@ class ImportExcelDataBean : DataBean() {
                     var eb= ExcelBuild(inputStream,appbean)
                     eb.readExcelContent()
                 }
-                fileContent = file.fileOutputStream.toString("UTF-8")
-                log.debug("fileContent=$fileContent")
+                log.debug("excel import end")
+                this.clientSession.showMessageBox(this.clientSession.currentEvent, "ImportExcelDataBean", "导入成功", arrayOf())
             } catch (var6: UnsupportedEncodingException) {
                 log.error("导入出错",var6)
                 var6.printStackTrace()
