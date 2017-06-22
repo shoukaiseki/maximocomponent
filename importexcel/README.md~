@@ -7,7 +7,7 @@ maximo导入excel文件
 例子使用java编写
 
 1. 将 maximocomponent/maximolib 下面的 shoukaiseki.jar poi-3.8-20120326.jar
-   将 maximocomponent/lib 下面的 kotlin-runtime.jar
+2. 将 maximocomponent/lib 下面的 kotlin-runtime.jar
 
 3. 这几个jar添加到 maximo.ear/lib 目录下
 
@@ -33,9 +33,15 @@ maximo导入excel文件
 
 在该应用的appbean中引入 ExcelBuildActionCall 接口
 
+### 注意事项
+设置mbo字段值的时候,先判断 excel中的值是否为空
 
 # 例子1
 事例xml文件,应用xml在 sample/skstestie001 下
+
 导入数据为子表数据
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/002.png)
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/skstestie001a.png)
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/skstestie001b.png)
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/skstestie001c.png)
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/skstestie001d.png)
