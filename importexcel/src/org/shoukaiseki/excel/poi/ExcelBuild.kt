@@ -63,10 +63,15 @@ constructor(inputStream: InputStream, ebac: ExcelBuildActionCall) {
                 var j = 0
                 val row = ExcelRow(datas)
                 val temprow=ExcelRow(datas)
-                while (j < colNum) {
 
-                    var str = getMergedRegionValue(sheet,this.row.getCell(j.toShort()))
+                while (j < colNum) {
                     var colname= ExcelStaticHouhou.columnEgo(j).toUpperCase()
+                    if(this.row.getCell(j.toShort())==null){
+                        row[colname]= ""
+                        j++
+                        continue
+                    }
+                    var str = getMergedRegionValue(sheet,this.row.getCell(j.toShort()))
                     temprow[colname]= getCellFormatValue(this.row.getCell(j.toShort()))
                     log.debug("colname=$colname,str=$str")
                     row[colname]= str

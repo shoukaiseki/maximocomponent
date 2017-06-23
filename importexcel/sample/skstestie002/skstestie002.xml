@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<presentation id="skstestie" ismobile="false" mboname="TESTIMPEXCELPARENT" resultstableid="results_showlist" version="6.0.0" viewport="1041x600" beanclass="org.shoukaiseki.webclient.beans.test.SkstestieAppBean2">
+	<page id="mainrec" scroll="false">
+		<include controltoclone="pageHeader" id="INCLUDE-pageHeader"/>
+		<clientarea id="clientarea">
+			<tabgroup id="maintabs" style="form">
+				<tab default="true" id="results" label="List" type="list">
+					<menubar event="search" id="actiontoolbar1" sourcemethod="getAppSearchOptions"/>
+					<table id="results_showlist" inputmode="readonly" label="TABLE TITLE" mboname="TESTIMPEXCELPARENT" selectmode="multiple">
+						<tablebody displayrowsperpage="20" filterable="true" filterexpanded="true" id="results_showlist_tablebody">
+							<tablecol dataattribute="TESTIMPEXCELPARENTID" filterable="false" id="results_showlist_column_select" mxevent="toggleselectrow" mxevent_desc="Select Row {0}" sortable="false" type="event"/>
+							<tablecol dataattribute="TESTIMPEXCELPARENTID" id="results_showlist_column_link" mxevent="selectrecord" mxevent_desc="Go To %1" type="link" usefieldsizegroup="false"/>
+							<tablecol dataattribute="NAME" id="results_showlist_column2a" mxevent="selectrecord"/>
+							<tablecol dataattribute="DESCRIPTION" id="results_showlist_column2" mxevent="selectrecord"/>
+							<tablecol filterable="false" id="results_bookmark" mxevent="BOOKMARK" mxevent_desc="Add to Bookmarks" mxevent_icon="btn_addtobookmarks.gif" sortable="false" type="event"/>
+						</tablebody>
+					</table>
+				</tab>
+				<tab id="main" label="Main" type="insert">
+					<section id="maintab_section"> 
+						<sectionrow id="section_xml_row_1"> 
+							<sectioncol id="section_xml_col_1"> 
+								<section id="maintab_section_1">
+									<textbox dataattribute="TESTIMPEXCELPARENTID" id="maintab_attr1"/>
+									<textbox dataattribute="DESCRIPTION" id="maintab_attr2" lookup="longdesc"/>
+									<textbox dataattribute="NAME" id="maintab_attr7"/>
+									<textbox dataattribute="TESTIMPEXCELPARENTNUM" id="maintab_attr8"/>
+									<textbox dataattribute="SITEID" id="maintab_attr3" inputmode="readonly"/>
+									<textbox dataattribute="ORGID" id="maintab_attr4" inputmode="readonly"/>
+								</section>
+							</sectioncol> 
+						</sectionrow> 
+					</section>  
+					<table relationship="TESTIMPEXCEL" id="1369833956416"  label="子表" orderby="TESTIMPEXCELID asc"> 
+						<defaultvalue dataattribute="TESTIMPEXCELPARENTNUM" defaulttype="insert" fromattribute="TESTIMPEXCELPARENTNUM" fromdatasrc="mainrecord" id="1369664492323"/>  
+						<tablebody id="1369664104245"> 
+							<tablecol filterable="false" id="1369833956433" mxevent="toggledetailstate" sortable="false" type="event"/>  
+							<tablecol dataattribute="TESTIMPEXCELPARENTNUM" id="6916677e-5722-11e7-b31a-86e8fc3cda5c" label="" inputmode="readonly"/>
+							<tablecol dataattribute="TESTIMPEXCELID" id="6916677c-5722-11e7-b768-86e8fc3cda5c" label="" inputmode="readonly"/>
+							<tablecol dataattribute="TESTIMPEXCELNUM" id="6916677d-5722-11e7-924d-86e8fc3cda5c" label="" inputmode="readonly"/>
+							<tablecol dataattribute="AMOUNT01" id="69166771-5722-11e7-a8d5-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="DESCRIPTION" id="69166776-5722-11e7-9719-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="DATE01" id="69166773-5722-11e7-afb1-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="TIME01" id="6916677f-5722-11e7-b483-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="DATETIME01" id="69166774-5722-11e7-8b2c-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="BIGINT01" id="69166772-5722-11e7-9258-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="SMALLINT01" id="6916677b-5722-11e7-95fe-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="INTEGER01" id="69166778-5722-11e7-8513-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="YORN01" id="69166780-5722-11e7-8028-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="DECIMAL01" id="69166775-5722-11e7-965a-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="FLOAT01" id="69166777-5722-11e7-af56-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="ALN01" id="6915a41e-5722-11e7-b03f-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="ALN02" id="69166770-5722-11e7-b2fd-86e8fc3cda5c" label=""/>
+							<tablecol dataattribute="SITEID" id="6916677a-5722-11e7-b72d-86e8fc3cda5c" label="" inputmode="readonly"/>
+							<tablecol dataattribute="ORGID" id="69166779-5722-11e7-a7a1-86e8fc3cda5c" label="" inputmode="readonly"/>
+						</tablebody>  
+						<buttongroup id="1369664594114"> 
+							<pushbutton id="1369664594122" label="新建行" mxevent="addrow"/> 
+						</buttongroup>  
+						<tabledetails id="resultsTabledetails"> 
+							<section id="child_section"> 
+								<sectionrow id="child_xml_row_1"> 
+									<sectioncol id="child_xml_col_1"> 
+										<section id="child_section_1">
+											<textbox dataattribute="AMOUNT01" id="c75bb46f-5722-11e7-a87c-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="DESCRIPTION" id="c75bb474-5722-11e7-8b08-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="DATE01" id="c75bb471-5722-11e7-a893-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="TIME01" id="c75bb47d-5722-11e7-a240-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="DATETIME01" id="c75bb472-5722-11e7-979d-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="ALN01" id="c75af121-5722-11e7-97bf-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="ALN02" id="c75bb46e-5722-11e7-874e-86e8fc3cda5c" label=""/>
+										</section>
+									</sectioncol> 
+									<sectioncol id="child_xml_col_2"> 
+										<section id="child_section_2">
+											<textbox dataattribute="BIGINT01" id="c75bb470-5722-11e7-b458-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="INTEGER01" id="c75bb476-5722-11e7-badc-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="SMALLINT01" id="c75bb479-5722-11e7-8aca-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="DECIMAL01" id="c75bb473-5722-11e7-999d-86e8fc3cda5c" label=""/>
+											<textbox dataattribute="FLOAT01" id="c75bb475-5722-11e7-a354-86e8fc3cda5c" label=""/>
+											<checkbox dataattribute="YORN01" id="c75bb47e-5722-11e7-9cf6-86e8fc3cda5c" label=""/>
+										</section>
+									</sectioncol> 
+									<sectioncol id="child_xml_col_3"> 
+										<section id="child_section_3">
+											<textbox dataattribute="TESTIMPEXCELID" id="c75bb47a-5722-11e7-8690-86e8fc3cda5c" label="" inputmode="readonly"/>
+											<textbox dataattribute="TESTIMPEXCELNUM" id="c75bb47b-5722-11e7-8396-86e8fc3cda5c" label="" inputmode="readonly"/>
+											<textbox dataattribute="TESTIMPEXCELPARENTNUM" id="c75bb47c-5722-11e7-ba1f-86e8fc3cda5c" label="" inputmode="readonly"/>
+											<textbox dataattribute="ORGID" id="c75bb477-5722-11e7-96d4-86e8fc3cda5c" label="" inputmode="readonly"/>
+											<textbox dataattribute="SITEID" id="c75bb478-5722-11e7-9918-86e8fc3cda5c" label="" inputmode="readonly"/>
+										</section>
+									</sectioncol> 
+								</sectionrow> 
+							</section>  
+						</tabledetails> 
+					</table> 
+				</tab>
+			</tabgroup>
+		</clientarea>
+		<include controltoclone="pageFooter" id="INCLUDE-pageFooter"/>
+	</page>
+
+	<dialog beanclass="psdi.webclient.system.beans.QbeBean" id="searchmore" inputmode="query" label="More Search Fields">
+		<section id="searchmore_1">
+			<textbox dataattribute="TESTIMPEXCELPARENTID" id="searchmore_attr1"/>
+			<textbox dataattribute="DESCRIPTION" id="searchmore_attr2"/>
+			<textbox dataattribute="SITEID" id="searchmore_attr3"/>
+			<textbox dataattribute="ORGID" id="searchmore_attr4"/>
+			<textbox dataattribute="DESCRIPTION_LONGDESCRIPTION" id="searchmore_attr5"/>
+			<checkbox dataattribute="HASLD" id="searchmore_attr6"/>
+			<textbox dataattribute="NAME" id="searchmore_attr7"/>
+			<textbox dataattribute="TESTIMPEXCELPARENTNUM" id="searchmore_attr8"/>
+		</section>
+		<buttongroup id="searchmore_buttongroup">
+			<pushbutton default="true" id="searchmore_buttongroup_1" label="Find" mxevent="dialogok"/>
+			<pushbutton id="qbe_restoreappdefault_button" label="恢复应用程序缺省值" mxevent="qbeclear"/>
+			<pushbutton id="qbe_revisebutton" label="修订" menutype="SEARCHMOREREVISE" targetid="searchmore"/>
+			<pushbutton id="searchmore_buttongroup_3" label="Cancel" mxevent="qbecancel"/>
+		</buttongroup>
+	</dialog>
+
+	<dialog beanclass="psdi.webclient.system.beans.ViewBookmarksBean" id="searchbook" label="我的书签" mboname="TESTIMPEXCELPARENT">
+		<table id="bookmarks_table" inputmode="readonly" selectmode="single">
+			<tablebody displayrowsperpage="20" filterable="true" id="bookmarks_table_tablebody">
+				<tablecol dataattribute="TESTIMPEXCELPARENTID" id="bookmarks_tablecolumn_1" mxevent="selectrecord" type="link"/>
+				<tablecol dataattribute="description" id="bookmarks_tablecolumn_2"/>
+				<tablecol filterable="false" id="bookmarks_tablecolumn_3" mxevent="instantdelete" mxevent_desc="Delete" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+			</tablebody>
+		</table>
+		<buttongroup id="bookmarks_2">
+			<pushbutton default="true" id="bookmarks_2_1" label="确定" mxevent="dialogok"/>
+		</buttongroup>
+	</dialog>
+	<configurationblock id="datastore_configurationblock">
+	</configurationblock>
+</presentation>
