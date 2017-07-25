@@ -15,6 +15,9 @@ maximo导入excel文件
 
 5. 将 maximocomponent/importexcel/binversion 里面编译好的类放到 MAXIMO.ear/maximouiweb.war/WEB-INF/classes 下
 
+签名添加:
+
+nav_icon_import.gif
 
 ## LIBRARY.xml 增加以下内容
 ```
