@@ -7,9 +7,9 @@
       <sourceFolder url="file://$MODULE_DIR$/importexcel/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/importexcel/test" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="jdk1.7.0_51" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="maximolib" level="project" />
+    <orderEntry type="library" exported="" name="maximolib" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
   </component>
 </module>
