@@ -16,11 +16,29 @@ maximo导入excel文件
 5. 将 maximocomponent/importexcel/binversion 里面编译好的类放到 MAXIMO.ear/maximouiweb.war/WEB-INF/classes 下
 
 签名添加:
+```Sql
+--导入excel
+--SIGOPTION
+OPTIONNAME:IMPORTE
+DESCRIPTION:导入excle
 
-nav_icon_import.gif
+--MAXMENU
+KEYVALUE:IMPORTE
+IMAGE:nav_icon_import.gif
+
+--下载模板
+--SIGOPTION
+OPTIONNAME:EXPORTE
+DESCRIPTION:下载模板
+
+--MAXMENU
+KEYVALUE:EXPORTE
+IMAGE:nav_icon_export.gif
+URL:模板的下载地址
+```
 
 ## LIBRARY.xml 增加以下内容
-```
+```Xml
 	<dialog beanclass="org.shoukaiseki.webclient.beans.ImportExcelDataBean" id="importe" label="导入excle">
 		<section id="importexcle_1">
 			<importapp id="importexcle_1_8" label="浏览文件:"/>
@@ -31,6 +49,23 @@ nav_icon_import.gif
 		</buttongroup>
 	</dialog>
 ```
+## 应用页面增加以下内容
+```Xml
+	<dialog id="exporte" label="下载模板">
+
+		<section id="exporte_section">
+			<helpgrid id="exporte_helpgrid01" innerhtml="&lt;font color=&quot;#FF0000&quot; &gt;excel中的工作表位置,标题都不可修改&lt;/font&gt;"/>
+			<!--url 地址填写模板下载的地址-->
+			<hyperlink id="exporte_hyperlink01" label="点击下载模板" url="http://xxx.xxx/doclinks/exceltemplate/user.xls"/>
+		</section>
+		<buttongroup id="exporte_2">
+			<pushbutton default="true" id="exporte_2_1" label="确定" mxevent="dialogok"/>
+		</buttongroup>
+		
+	</dialog>
+
+```
+
 ### 页面引用
 在页面中增加签名和工具条,或者按钮,签名名称/按钮事件设置为 importe 就好
 
@@ -52,7 +87,7 @@ nav_icon_import.gif
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie001/skstestie001d.png)
 
 ### 代码示例
-```
+```Java
 package org.shoukaiseki.webclient.beans.test;
 
 import org.apache.log4j.Logger;
