@@ -43,6 +43,8 @@ class ImportExcelDataBean : DataBean() {
                 if(appbean is ExcelBuildActionCall){
                     var eb= ExcelBuild(inputStream,appbean)
                     eb.readExcelContent()
+                }else{
+                    throw MXApplicationException("不支持导入功能","${appbean.javaClass.name} 没有继承 ExcelBuildActionCall 接口")
                 }
                 log.debug("excel import end")
                 this.clientSession.showMessageBox(this.clientSession.currentEvent, "ImportExcelDataBean", "导入成功", arrayOf())

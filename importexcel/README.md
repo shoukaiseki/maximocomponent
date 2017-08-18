@@ -16,8 +16,26 @@ maximo导入excel文件
 5. 将 maximocomponent/importexcel/binversion 里面编译好的类放到 MAXIMO.ear/maximouiweb.war/WEB-INF/classes 下
 
 签名添加:
+```Sql
+--导入excel
+--SIGOPTION
+OPTIONNAME:IMPORTE
+DESCRIPTION:导入excle
 
-nav_icon_import.gif
+--MAXMENU
+KEYVALUE:IMPORTE
+IMAGE:nav_icon_import.gif
+
+--下载模板
+--SIGOPTION
+OPTIONNAME:EXPORTE
+DESCRIPTION:下载模板
+
+--MAXMENU
+KEYVALUE:EXPORTE
+IMAGE:nav_icon_export.gif
+URL:模板的下载地址
+```
 
 ## LIBRARY.xml 增加以下内容
 ```
