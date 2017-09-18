@@ -267,6 +267,7 @@ if(componentVisible && isVisible.equals("true"))
 	if(component.getProperty("mxevent").equals("migrate"))
 	{
 		link=wcs.getMaximoRequestContextURL() + "/ui/" + System.currentTimeMillis() + "?responsetype="+System.currentTimeMillis()+".json&shoukaiseki=migrate&_tbldnld=" + control.getId() + "&" + wcs.getUISessionUrlParameter() + wcs.getCSRFTokenParameter();
+		//调试时候 sks_download 设置为 false,直接在网页中预览
 		link=wcs.getMaximoRequestContextURL() + "/webclient/help/migrate.jsp?sks_download=false&_tbldnld=" + control.getId() + "&" + wcs.getUISessionUrlParameter() + wcs.getCSRFTokenParameter();
 		link=wcs.getMaximoRequestContextURL() + "/webclient/help/migrate.jsp?sks_download=true&_tbldnld=" + control.getId() + "&" + wcs.getUISessionUrlParameter() + wcs.getCSRFTokenParameter();
 		mxevent="";
