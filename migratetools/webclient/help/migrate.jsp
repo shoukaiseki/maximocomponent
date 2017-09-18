@@ -36,7 +36,7 @@
 			String appName=tableBean.getMboSet().getApp();
 			System.out.println("migrate.jsp.appName="+appName);
 			if("CONFIGUR".equalsIgnoreCase(appName)){
-				FilterModel fm=new FilterModel();
+				FilterModel fm=new FilterModel().setTableid("maxobjectcfg");
 				fm.addChilds(new FilterModel("MAXATTRIBUTECFG",""));
 				fm.addChilds(new FilterModel("MAXRELATIONSHIP",""));
 				new org.shoukaiseki.webclient.beans.migratetools.ConfigurMigrate(tableBean,request,response).setFilters(fm).execute().download();
