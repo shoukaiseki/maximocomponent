@@ -221,7 +221,7 @@
 ```
 
 ### 修改webclient/components/label.jsp
-```Jsp
+```Java
 	//This is to fix a problem with table downloads (we force the component to be a direct lin to the jsp)
 	if(component.getProperty("mxevent").equals("download"))
 	{
