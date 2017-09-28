@@ -8,13 +8,25 @@
 <br>
 事例如下图:
 
+列表初始图片
+
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E9%A6%96%E9%A1%B5%E5%B0%BE%E9%A1%B5%E6%8C%89%E9%92%AE/img/001.png)
+
+点击'尾页'按钮之后
 
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E9%A6%96%E9%A1%B5%E5%B0%BE%E9%A1%B5%E6%8C%89%E9%92%AE/img/002.png)
 
+点击'首页'按钮之后
+
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E9%A6%96%E9%A1%B5%E5%B0%BE%E9%A1%B5%E6%8C%89%E9%92%AE/img/003.png)
 
+点击'跳转到指定页'按钮之后
+
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E9%A6%96%E9%A1%B5%E5%B0%BE%E9%A1%B5%E6%8C%89%E9%92%AE/img/004.png)
+
+'跳转指定页'效果图
+
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E5%88%97%E8%A1%A8%E5%A2%9E%E5%8A%A0%E9%A6%96%E9%A1%B5%E5%B0%BE%E9%A1%B5%E6%8C%89%E9%92%AE/img/005.png)
 
 
 ## 增加按钮标题
@@ -25,6 +37,7 @@ REM INSERTING into MAXMESSAGES
 SET DEFINE OFF;
 Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('cntrlTableAltEndRow','tableinfo','尾页',null,'STATUS',0,null, (next value for MAXMESSAGESSEQ),'BMXAA9106E',null,null,null,null,1,2900247);
 Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('cntrlTableAltFirstRow','tableinfo','首页',null,'STATUS',0,null,(next value for MAXMESSAGESSEQ),'BMXAA9107E',null,null,null,null,1,2900246);
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('ntrlTableJumpToPage','tableinfo','跳转到指定页',null,'STATUS',0,null,(next value for MAXMESSAGESSEQ),'BMXAA9108E',null,null,null,null,1,2900246);
 ```
 
 ### oracle 数据库
@@ -33,6 +46,20 @@ Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTO
 SET DEFINE OFF;
 Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('cntrlTableAltEndRow','tableinfo','尾页',null,'STATUS',0,null, (MAXMESSAGESSEQ.nextval),'BMXAA9106E',null,null,null,null,1,2900247);
 Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('cntrlTableAltFirstRow','tableinfo','首页',null,'STATUS',0,null,(MAXMESSAGESSEQ.nextval),'BMXAA9107E',null,null,null,null,1,2900246);
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('ntrlTableJumpToPage','tableinfo','跳转到指定页',null,'STATUS',0,null,(MAXMESSAGESSEQ.nextval),'BMXAA9108E',null,null,null,null,1,2900246);
+```
+
+## library.xml 增加
+```Xml
+	<dialog beanclass="org.shoukaiseki.webclient.beans.searchtable.JumpToPageDataBean" id="showsearchtable" mboname="SKSSHOWSEARCHTABLE" label="跳转到指定页">
+		<section id="showsearchtable_1">
+			<textbox dataattribute="pagenum" id="showsearchtable_textbox_001" inputmode="required"/>
+		</section>
+		<buttongroup id="showsearchtable_2">
+			<pushbutton id="showsearchtable_2_1" label="转到" mxevent="dialogok"/>
+			<pushbutton id="showsearchtable_2_2" label="取消" mxevent="dialogcancel"/>
+		</buttongroup>
+	</dialog>
 ```
 
 ## control-registry.xml 修改
@@ -213,13 +240,14 @@ Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTO
 								<toggleimage id="ti5" srctrue="tablebtn_nextdown_on.gif" srcfalse="tablebtn_nextdown_off.gif" mxevent="nextrow" statecheck="moreRowsAfter" msgtrue="tableinfo#cntrlTableAltNextRow" msgreadertrue="tableinfo#cntrlTableCtrlAltNextRow" msgfalse="" />
 								<image id="img8" src="tablebtn_divider.gif" ariahidden="true"/>
 								<!--shoukaiseki add start-->
-								<toggleimage id="ti6asus" srctrue="tablebtn_previous_on.gif" srcfalse="tablebtn_previous_off.gif" mxevent="startpage" statecheck="morePagesBefore" msgtrue="tableinfo#cntrlTableAltFirstRow" msgfalse="" />
+								<toggleimage id="ti6asus" srctrue="btn_first.gif" srcfalse="btn_first_off.gif" mxevent="startpage" statecheck="morePagesBefore" msgtrue="tableinfo#cntrlTableAltFirstRow" msgfalse="" />
 								<!--shoukaiseki add end-->
 								<toggleimage id="ti6" srctrue="tablebtn_previous_on.gif" srcfalse="tablebtn_previous_off.gif" mxevent="previouspage" statecheck="morePagesBefore" msgtrue="tableinfo#cntrlTableAltPrevPage" msgfalse="" />
 								<label id="lb3" cssclass="tht tCount" title="@{tablecounter}" alwaysinclude="true" textcss="@{textcss}" hidewhen="{designmode}==true" includeuistatus="false" />
 								<toggleimage id="ti7" srctrue="tablebtn_next_on.gif" srcfalse="tablebtn_next_off.gif" mxevent="nextpage" statecheck="morePagesAfter" msgtrue="tableinfo#cntrlTableAltNextPage" msgfalse="" />
 								<!--shoukaiseki add start-->
-								<toggleimage id="ti7asus" srctrue="tablebtn_next_on.gif" srcfalse="tablebtn_next_off.gif" mxevent="endpage" statecheck="morePagesAfter" msgtrue="tableinfo#cntrlTableAltEndRow" msgfalse="" />
+								<toggleimage id="ti7asus" srctrue="btn_last.gif" srcfalse="btn_last_off.gif" mxevent="endpage" statecheck="morePagesAfter" msgtrue="tableinfo#cntrlTableAltEndRow" msgfalse="" />
+								<image id="img5asus" src="img_menu.gif" mxevent="showsearchtable" msggroup="tableinfo" msgkey="ntrlTableJumpToPage" hidewhen="@{inlisttab}==false" />
 								<!--shoukaiseki add end-->
 								<blankline id="bl" cssclass="text ts" alwaysinclude="true" />
 								<label id="lb4" cssclass="tht" image="nav_icon_export.gif" imagefalse="tablebtn_download_off.gif" mxevent="migrate" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle" visible="@{migratedownload}"/>
@@ -258,10 +286,12 @@ Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTO
 	</control-descriptor>
 ```
 
-## java类代码
+## java类代码 
+### org.shoukaiseki.webclient.controls.Table.java
 ```Java
 package org.shoukaiseki.webclient.controls;
 
+import org.shoukaiseki.webclient.utils.DataBeanUtils;
 import psdi.util.MXException;
 import psdi.webclient.system.beans.DataBean;
 
@@ -300,7 +330,7 @@ public class Table extends psdi.webclient.controls.Table{
 //        this.setCurrentRow(this.tableBean.getTableOffset());
         int count = tableBean.getMboSet().count();
         if(count>=1){
-            movetorow(1);
+            DataBeanUtils.movetorow(1,tableBean);
         }
         return 1;
     }
@@ -312,30 +342,171 @@ public class Table extends psdi.webclient.controls.Table{
 //        this.setCurrentRow(this.tableBean.getTableOffset());
         int count = tableBean.getMboSet().count();
         if(count>=1) {
-            movetorow(count);
+            DataBeanUtils.movetorow(count,tableBean);
         }
         return 1;
     }
 
-    public void movetorow(int rownum)throws Exception{
-        DataBean dataBean = getDataBean();
-        int pageEndRowTemp=-1;
-        if(dataBean.getMboSet().count()>=rownum-1){
-            while(dataBean.getPageEndRow()<rownum||dataBean.getPageEndRow()-dataBean.getPageRowCount()>rownum){
-                if(dataBean.getPageEndRow()<rownum){
-                    dataBean.scrollnext();
-                }else {
-                    dataBean.scrollprev();
-                }
-                if(pageEndRowTemp==dataBean.getPageEndRow()){
-                    break;
-                }
-                pageEndRowTemp=dataBean.getPageEndRow();
-                System.out.println("rownum="+rownum+",PageEndRow="+dataBean.getPageEndRow()+",pageStartRow="+(dataBean.getPageEndRow()-dataBean.getPageRowCount()));
+
+}
+```
+
+### JumpToPageDataBean.kt
+
+```Kt
+package org.shoukaiseki.webclient.beans.searchtable
+
+import org.apache.log4j.Logger
+import org.shoukaiseki.webclient.utils.DataBeanUtils
+import psdi.mbo.MboConstants
+import psdi.util.MXException
+import psdi.webclient.controls.Table
+import psdi.webclient.system.beans.DataBean
+
+import java.rmi.RemoteException
+
+/**
+ * org.shoukaiseki.webclient.beans.searchtable.JJumpToPageDataBean<br></br>
+ *
+ * @author 蒋カイセキ    Japan-Tokyo  2017-09-28 13:00:372017-09-28グ13:01:25shoukaiseki.blog.163.com/<br></br>
+ * E-メール jiang28555@Gmail.com<br></br>
+ */
+open class JumpToPageDataBean : DataBean() {
+
+    var displayrowsperpage=-1
+
+    companion object {
+        val log:Logger = Logger.getLogger("org.shoukaiseki.showsearchtable")
+    }
+
+    override fun initialize() {
+        super.initialize()
+        log.debug("mboSet.isEmpty=${mboSet.isEmpty}")
+        if(mboSet.isEmpty){
+            val mbo = mboSet.add()
+        }
+        val ci = this.creatingEvent.sourceControlInstance
+        if(ci.dataBean==null){
+            log.debug("dataBean is null")
+        }
+        val dataBean:DataBean = ci.dataBean
+        log.debug("currentRow=${dataBean.currentRow}")
+        log.debug("pageEndRow=${dataBean.pageEndRow}")
+        log.debug("pageRowCount=${dataBean.pageRowCount}")
+        displayrowsperpage=getDisplayRowsPerPage()
+        val currentRow = dataBean.currentRow+1
+        log.debug("currentRow=${currentRow}")
+        log.debug("currentRow=${currentRow/displayrowsperpage}")
+        val page=if(currentRow%displayrowsperpage==0){
+            currentRow/displayrowsperpage
+        }else{
+            currentRow/displayrowsperpage+1
+        }
+        log.debug("page=${page}")
+        mbo?.setValue("PAGENUM",page,MboConstants.NOACCESSCHECK)
+        setCurrentRecordData(mbo)
+    }
+
+    @Synchronized
+    @Throws(MXException::class, RemoteException::class)
+    override open  fun execute(): Int {
+        log.debug("$javaClass.execute")
+        val ci = this.creatingEvent.sourceControlInstance
+        if(ci.dataBean==null){
+            log.debug("dataBean is null")
+            return 1
+        }
+
+        val dataBean:DataBean = ci.dataBean
+        displayrowsperpage=getDisplayRowsPerPage()
+
+
+        if(mbo!=null){
+            val pagenum = mbo.getInt("PAGENUM")
+            var rownum=pagenum*displayrowsperpage
+            log.debug("pagenum=$pagenum,rownum=$rownum")
+            DataBeanUtils.movetorow(rownum,dataBean)
+
+
+        }
+        return 1
+    }
+
+    /**
+     * 获取每页的行数
+     */
+    open fun getDisplayRowsPerPage():Int{
+        if(displayrowsperpage!=-1){
+           return displayrowsperpage
+        }
+        val ci = this.creatingEvent.sourceControlInstance
+        val dataBean:DataBean = ci.dataBean
+        log.debug("ci=${ci.javaClass}")
+        log.debug("dataBean=$dataBean,id=${dataBean?.id}")
+        log.debug("showcount=${ci.getProperty("showcount")}")
+        log.debug("displayrowsperpage=${ci.getProperty("displayrowsperpage")}")
+        displayrowsperpage=dataBean.pageRowCount
+
+        if(ci is Table){
+            log.debug("body.displayrowsperpage=${ci.body.getProperty("displayrowsperpage")}")
+            if(ci.body!=null){
+                displayrowsperpage=ci.body.getInt("displayrowsperpage",displayrowsperpage)
             }
         }
-        dataBean.setCurrentRow(rownum-1);
+        return displayrowsperpage
     }
 
 }
+```
+### DataBeanUtils.kt
+
+```Kt
+package org.shoukaiseki.webclient.utils
+
+import org.apache.log4j.Logger
+import psdi.webclient.system.beans.DataBean
+
+/**
+ * org.shoukaiseki.webclient.utils.DataBeanUtils <br></br>
+ *
+ * @author 蒋カイセキ    Japan-Tokyo  2017-09-28 13:39:16<br></br>
+ * ブログ http://shoukaiseki.blog.163.com/<br></br>
+ * E-メール jiang28555@Gmail.com<br></br>
+ */
+open class DataBeanUtils {
+
+
+    companion object {
+        @JvmStatic var log: Logger = Logger.getLogger("org.shoukaiseki.utils")
+        /**
+         * 跳转到指定行
+         * @param rownum
+         * @param dataBean
+         * @throws Exception
+         */
+        @Throws(Exception::class)
+        @JvmStatic fun movetorow(inrownum: Int, dataBean: DataBean) {
+            var pageEndRowTemp = -1
+            var rownum=inrownum
+            if (dataBean.mboSet.count() <rownum ) {
+                rownum=dataBean.mboSet.count()
+            }
+            while (dataBean.pageEndRow < rownum || dataBean.pageEndRow - dataBean.pageRowCount > rownum) {
+                if (dataBean.pageEndRow < rownum) {
+                    dataBean.scrollnext()
+                } else {
+                    dataBean.scrollprev()
+                }
+                if (pageEndRowTemp == dataBean.pageEndRow) {
+                    break
+                }
+                pageEndRowTemp = dataBean.pageEndRow
+                log.debug("rownum=" + rownum + ",PageEndRow=" + dataBean.pageEndRow + ",pageStartRow=" + (dataBean.pageEndRow - dataBean.pageRowCount))
+            }
+            dataBean.currentRow = rownum - 1
+        }
+    }
+
+}
+
 ```
