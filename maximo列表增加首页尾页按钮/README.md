@@ -49,6 +49,160 @@ Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTO
 Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('ntrlTableJumpToPage','tableinfo','跳转到指定页',null,'STATUS',0,null,(MAXMESSAGESSEQ.nextval),'BMXAA9108E',null,null,null,null,1,2900246);
 ```
 
+## 建立虚拟表 SKSSHOWSEARCHTABLE
+表中只需要有个 pagenum 字段即可
+
+```Json
+{
+	"app":"CONFIGUR",
+	"childs":[],
+	"datas":[
+		{
+			"childs":[
+				{
+					"childs":[],
+					"datas":[
+						{
+							"childs":[],
+							"data":{
+								"SEARCHTYPE":"NONE",
+								"AUTOKEYNAME":"",
+								"REMARKS":"页码",
+								"DEFAULTVALUE":"",
+								"MLINUSE":0,
+								"MAXATTRIBUTEID":61208,
+								"REMARKS_BASELANGUAGE":"页码",
+								"PERSISTENT":0,
+								"SEQUENCENAME":"",
+								"OBJECTNAME":"SKSSHOWSEARCHTABLE",
+								"EAUDITTBNAME":"",
+								"RESTRICTED":0,
+								"VIEWCHANGED":"",
+								"ISLDOWNER":0,
+								"REQUIRED":0,
+								"ISPOSITIVE":0,
+								"LENGTH":12,
+								"SAMEASATTRIBUTE":"",
+								"CLASSNAME":"",
+								"ISHANDLECOLUMN":0,
+								"MLSUPPORTED":0,
+								"ATTRIBUTENAME":"PAGENUM",
+								"MUSTBE":0,
+								"EXTENDED":0,
+								"DOMAINID":"",
+								"SCALE":0,
+								"LOCALIZABLE":0,
+								"ATTRIBUTENO":1,
+								"MAXTYPE":"INTEGER",
+								"TEXTDIRECTION":"",
+								"NEXTSEQUENCENO":0,
+								"EAUDITENABLED":0,
+								"SAMEASOBJECT":"",
+								"PRIMARYKEYCOLSEQ":0,
+								"ALIAS":"PAGENUM",
+								"LANGTABLENAME":"",
+								"CHANGED":"N",
+								"COMPLEXEXPRESSION":"",
+								"COLUMNNAME":"",
+								"USERDEFINED":1,
+								"HANDLECOLUMNNAME":"",
+								"ENTITYNAME":"",
+								"ESIGENABLED":0,
+								"TITLE":"页码",
+								"CANAUTONUM":0
+							}
+						}
+					],
+					"filters":[],
+					"name":"MAXATTRIBUTECFG",
+					"relationName":"MAXATTRIBUTECFG",
+					"tableid":"b6c2ca1d-2371-4eeb-a748-e94ac2626371"
+				},
+				{
+					"childs":[],
+					"datas":[],
+					"filters":[],
+					"name":"MAXRELATIONSHIP",
+					"relationName":"MAXRELATIONSHIP",
+					"tableid":"eacfe755-1234-4e56-9e7a-9f588589f4bf"
+				}
+			],
+			"data":{
+				"ALTIXNAME":"",
+				"INTERNAL":0,
+				"RESTOREDATA":0,
+				"STORAGETYPEDESC":"",
+				"ADDROWSTAMP":0,
+				"STORAGEPARTITION":"",
+				"VIEWFROM":"",
+				"IMPORTED":0,
+				"SITEORGTYPE":"系统",
+				"CONTENTATTRIBUTE":"",
+				"ESIGFILTER":"",
+				"TRIGROOT":"",
+				"PERSISTENT":0,
+				"STORAGETYPE":0,
+				"OBJECTNAME":"SKSSHOWSEARCHTABLE",
+				"DESCRIPTION_BASELANGUAGE":"shoukaiseki 跳转到指定页虚拟表",
+				"UNIQUECOLUMNNAME":"",
+				"ISVIEW":0,
+				"SERVICENAME":"CUSTAPP",
+				"EAUDITTBNAME":"",
+				"MAXOBJECTID":1663,
+				"VIEWCHANGED":"",
+				"ISLANGTABLE":0,
+				"VIEWSELECT":"",
+				"TEXTSEARCHENABLED":0,
+				"CLASSNAME":"psdi.mbo.custapp.NonPersistentCustomMboSet",
+				"LANGCOLUMNNAME":"",
+				"VIEWWHERE":"",
+				"EXTENDSOBJECT":"",
+				"EAUDITFILTER":"",
+				"DESCRIPTION":"shoukaiseki 跳转到指定页虚拟表",
+				"TEXTDIRECTION":"",
+				"MAINOBJECT":0,
+				"EAUDITENABLED":0,
+				"LANGTABLENAME":"",
+				"CHANGED":"N",
+				"ISAUDITTABLE":0,
+				"USERDEFINED":1,
+				"ENTITYNAME":"",
+				"AUTOSELECT":0,
+				"JOINOBJECT":""
+			}
+		}
+	],
+	"filtermodel":{
+		"app":"CONFIGUR",
+		"childs":[
+			{
+				"childs":[],
+				"filters":[],
+				"includes":[],
+				"name":"MAXATTRIBUTECFG",
+				"tableid":"b6c2ca1d-2371-4eeb-a748-e94ac2626371"
+			},
+			{
+				"childs":[],
+				"filters":[],
+				"includes":[],
+				"name":"MAXRELATIONSHIP",
+				"tableid":"eacfe755-1234-4e56-9e7a-9f588589f4bf"
+			}
+		],
+		"filters":[],
+		"includes":[],
+		"name":"MAXOBJECTCFG",
+		"tableid":"maxobjectcfg"
+	},
+	"filters":[],
+	"name":"MAXOBJECTCFG",
+	"tableid":"maxobjectcfg"
+}
+
+
+```
+
 ## library.xml 增加
 ```Xml
 	<dialog beanclass="org.shoukaiseki.webclient.beans.searchtable.JumpToPageDataBean" id="showsearchtable" mboname="SKSSHOWSEARCHTABLE" label="跳转到指定页">
