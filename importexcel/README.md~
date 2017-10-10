@@ -210,7 +210,7 @@ MboSetRemote testimpexcelSet=null;
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/importexcel/sample/skstestie002/skstestie002g.png)
 
 ### 代码示例
-```
+```Java
 package org.shoukaiseki.webclient.beans.test;
 
 import org.apache.log4j.Logger;

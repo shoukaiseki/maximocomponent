@@ -13,7 +13,9 @@ maximo导入excel文件
 
 4. 引入到  businessobjects.jar/META-INF/MANIFEST.MF 中添加  lib/kotlin-runtime.jar lib/shoukaiseki.jar lib/poi-3.8-20120326.jar 信息
 
-5. 将 maximocomponent/importexcel/binversion 里面编译好的类放到 MAXIMO.ear/maximouiweb.war/WEB-INF/classes 下
+5. 将 maximocomponent/importexcel/binversion 里面编译好的类(importexcel.jar里面的class为编译好的,eclipse中引入该包就好)放到 MAXIMO.ear/maximouiweb.war/WEB-INF/classes 下
+
+6. 需要修改源代码,需要eclipse安装 kotlin插件,推荐使用 IntelliJ IDEA 进行开发,因为eclipse中kotlin插件并不太好用
 
 签名添加:
 ```Sql
