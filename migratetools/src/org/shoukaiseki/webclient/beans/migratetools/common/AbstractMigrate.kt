@@ -13,6 +13,7 @@ import psdi.mbo.MboValueInfo
 import psdi.util.MXException
 import psdi.util.MaxType
 import psdi.webclient.system.beans.DataBean
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
@@ -181,12 +182,14 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
         }
         if(sks_download!=null&&(sks_download.equals("1",ignoreCase = true)||sks_download.equals("true",ignoreCase = true))){
             response.reset()
-            val reqContentType =  "${tableBean.mboSet.app.toLowerCase()}.json"
+            val timeStr= SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+            val reqContentType =  "${tableBean.mboSet.app.toLowerCase()}_$timeStr.json"
+
 
             response.contentType = "application/vnd.ms-excel; charset=$encoding"
             response.setHeader("Pragma", "public")
             response.setHeader("Cache-Control", "max-age=0")
-            response.setHeader("Content-Disposition", "attachment;filename=" + reqContentType)
+            response.setHeader("Content-Disposition", "attachment;filename=${reqContentType}" )
             val pw = response.writer
             val json=JSONObject.toJSONString(jsonRoot,true)
             pw.print(json)

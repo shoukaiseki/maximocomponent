@@ -1,5 +1,27 @@
 # maximo迁移工具
 
+### jar包添加
+maximocomponent 主项目下的 maximolib/fastjson-1.2.30.jar lib/kotlin-runtime.jar 需要引入到maximo中
+
+
+
+## 增加按钮标题
+
+### DB2 数据库
+```Sql
+REM INSERTING into MAXMESSAGES
+SET DEFINE OFF;
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('migratetoolsImport','shoukaiseki','迁移导入',null,'STATUS',0,null, (next value for MAXMESSAGESSEQ),'BMXAA9804E',null,null,null,null,1,2900247);
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('migratetoolsExport','shoukaiseki','迁移导出',null,'STATUS',0,null,(next value for MAXMESSAGESSEQ),'BMXAA9805E',null,null,null,null,1,2900246);
+```
+
+### oracle 数据库
+
+```Sql
+SET DEFINE OFF;
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('migratetoolsImport','shoukaiseki','迁移导入',null,'STATUS',0,null, (MAXMESSAGESSEQ.nextval),'BMXAA9804E',null,null,null,null,1,2900247);
+Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTONTEXT,MAXMESSAGESID,MSGID,EXPLANATION,ADMINRESPONSE,OPERATORRESPONSE,SYSTEMACTION,PREFIX,ROWSTAMP) values ('migratetoolsExport','shoukaiseki','迁移导出',null,'STATUS',0,null,(MAXMESSAGESSEQ.nextval),'BMXAA9805E',null,null,null,null,1,2900246);
+```
 
 ### control-registry.xml 修改
 ```Xml
@@ -181,8 +203,9 @@
 								<toggleimage id="ti7" srctrue="tablebtn_next_on.gif" srcfalse="tablebtn_next_off.gif" mxevent="nextpage" statecheck="morePagesAfter" msgtrue="tableinfo#cntrlTableAltNextPage" msgfalse="" />
 								<blankline id="bl" cssclass="text ts" alwaysinclude="true" />
 								<!--shoukaiseki add start-->
-								<label id="lb4" cssclass="tht" image="nav_icon_export.gif" imagefalse="tablebtn_download_off.gif" mxevent="migrate" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle" visible="@{migratedownload}"/>
-								<label id="lb4asus" cssclass="tht" image="tablebtn_download.gif" imagefalse="tablebtn_download_off.gif" mxevent="download" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle"/>
+								<image id="lb4asusimp" src="nav_icon_import.gif" mxevent="impmigratetools" msggroup="shoukaiseki" msgkey="migratetoolsImport" hidewhen="@{inlisttab}==false" />
+								<label id="lb4asus" cssclass="tht" image="nav_icon_export.gif" imagefalse="tablebtn_download_off.gif" mxevent="migrate" msggroup="shoukaiseki" msgkey="migratetoolsExport" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle" visible="@{migratedownload}"/>
+								<label id="lb4" cssclass="tht" image="tablebtn_download.gif" imagefalse="tablebtn_download_off.gif" mxevent="download" msggroup="tableinfo" msgkey="cntrlTableLblDownload" clickablestate="canDownload" hidewhen="@{download}==false" textcss="@{textcss}" includeuistatus="false" imagevalign="middle"/>
 								<!--shoukaiseki add end-->
 								<image id="img9" src="tablebtn_divider.gif" hidewhen="@{download}==false" ariahidden="true"/>
 								<toggleimage id="ti8" srctrue="minimize.gif" srcfalse="maximize.gif" statecheck="isExpanded" msgreplace="@{label}" msgtrue="tableinfo#cntrlTableAltHideTbl" msgfalse="tableinfo#cntrlTableAltShowTbl" mxevent="togglecollapse" falseactive="true" synchronous="false" />
