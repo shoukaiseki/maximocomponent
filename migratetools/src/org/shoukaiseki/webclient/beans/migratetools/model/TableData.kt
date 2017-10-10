@@ -7,7 +7,7 @@ package org.shoukaiseki.webclient.beans.migratetools.model
  * ブログ http://shoukaiseki.blog.163.com/<br></br>
  * E-メール jiang28555@Gmail.com<br></br>
  */
-open class TableData {
+open class TableData (var tableid:String){
 
     /**
      * 应用名

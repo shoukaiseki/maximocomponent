@@ -8,7 +8,7 @@ package org.shoukaiseki.webclient.beans.migratetools.model
  * E-メール jiang28555@Gmail.com<br></br>
  */
 
-open class RootTable : TableData(){
+open class RootTable(tableid:String) : TableData(tableid ){
 
-
+    var filtermodel:FilterModel?=null
 }

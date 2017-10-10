@@ -10,7 +10,6 @@ import psdi.mbo.MboRemote
 import psdi.mbo.MboSetEnumeration
 import psdi.mbo.MboSetRemote
 import psdi.mbo.MboValueInfo
-import psdi.util.MXApplicationException
 import psdi.util.MXException
 import psdi.util.MaxType
 import psdi.webclient.system.beans.DataBean
@@ -30,7 +29,7 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
 
     private var filtermodel:FilterModel
 
-    var jsonRoot=RootTable()
+    var jsonRoot=RootTable("")
 
     init {
         filtermodel =FilterModel()
@@ -49,8 +48,10 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
         val atts=initAtts(tableBean.mboSet)
 
         jsonRoot.filters=this.filtermodel.getFilters()
+        jsonRoot.filtermodel=this.filtermodel
         jsonRoot.app=tableBean.mboSet.app
         jsonRoot.name =tableBean.mboSet.name
+        jsonRoot.tableid=this.filtermodel.getTableid()
 
         logger.debug("filtermodel=${JSONObject.toJSONString(filtermodel)}")
 
@@ -78,7 +79,7 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
      * @param       fm  过滤器
      */
     open fun traversalFilterModel(mbo:MboRemote,fm:FilterModel): TableData {
-        val table = TableData()
+        val table = TableData(fm.getTableid())
         val mboSet = mbo.getMboSet(fm.name)
         table.relationName=mboSet.relationName
         table.name=mboSet.name
@@ -187,7 +188,7 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
             response.setHeader("Cache-Control", "max-age=0")
             response.setHeader("Content-Disposition", "attachment;filename=" + reqContentType)
             val pw = response.writer
-            val json=JSONObject.toJSONString(jsonRoot)
+            val json=JSONObject.toJSONString(jsonRoot,true)
             pw.print(json)
 //            logger.debug("json=$json")
             pw.close()
@@ -198,7 +199,7 @@ open class AbstractMigrate(val tableBean: DataBean, val request:HttpServletReque
             /* 星号表示所有的异域请求都可以接受， */
             response.setHeader("Access-Control-Allow-Methods", "GET,POST")
             val pw = response.writer
-            val json=JSONObject.toJSONString(jsonRoot)
+            val json=JSONObject.toJSONString(jsonRoot,true)
             pw.print(json)
 //            logger.debug("json=$json")
             pw.close()

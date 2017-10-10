@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="migratetools" default="compile" basedir=".">
+	<typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="../lib/kotlin-ant.jar"/>
+	<!-- 引用外部配置文件 {{{1 -->
+	<property file="build.properties"/>
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="jar_path" location="../maximolib" />
+	<property name="j2ee_path" location="../lib" />
+	<property name="src_dir" location="src" />
+	<property name="build_dir" location="bin" />
+	<property name="test_dir" location="test" />
+	
+	
+	
+	<!--
+	<property name="maximo_mbo_classes.dir" location="/media/develop/bea10_3/crp/linkmaximo/businessobjects/classes" />
+	-->
+
+	<!-- 定义classpath -->
+	<path id="libs">
+		<pathelement location="${jar_path}/*.jar" />
+	</path>
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+		<delete dir="${build_dir}" />
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build_dir}" />
+	</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac target="1.7"  destdir="${build_dir}"  includeantruntime="true" debug="true" srcdir="${src_dir}" >
+			<compilerarg line="-encoding UTF-8 "/>
+				<classpath> 
+					<pathelement path="${build_dir}"/> 
+					<fileset dir="${jar_path}">
+						<include name="**/*.jar"/> 
+					</fileset> 
+					<fileset dir="${j2ee_path}">
+					</fileset> 
+				</classpath> 
+			<withKotlin>
+			</withKotlin>
+		</javac>
+		<javac target="1.7"  destdir="${build_dir}"  includeantruntime="true" debug="true" srcdir="${test_dir}" >
+			<compilerarg line="-encoding UTF-8 "/>
+				<classpath> 
+					<pathelement path="${build_dir}"/> 
+					<fileset dir="${jar_path}">
+						<include name="**/*.jar"/> 
+					</fileset> 
+					<fileset dir="${j2ee_path}">
+					</fileset> 
+				</classpath> 
+			<withKotlin>
+			</withKotlin>
+		</javac>
+		
+		<jar jarfile="${ProjectName}.jar"
+			>	
+			<fileset dir="${build_dir}">
+				<include name="META-INF/**"/>
+				<include name="**"/>
+			</fileset>
+			<manifest>
+				<attribute name="Implementation-Title" value="${title}"/>
+				<attribute name="Implementation-Version" value="${version}"/>
+				<attribute name="${name}-Version" value="${version}"/>
+			</manifest>
+		</jar>
+		
+		<copy todir="${build_dir}">
+			<fileset dir="${src_dir}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+
+	</target>
+
+
+
+	<target name="cleanClasses">
+		<delete dir="${build_dir}" />
+	</target>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

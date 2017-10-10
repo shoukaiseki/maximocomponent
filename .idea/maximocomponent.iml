@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/importfile/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/importexcel/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/importexcel/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/migratetools/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/migratetools/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
