@@ -1,14 +1,14 @@
 package org.shoukaiseki.webclient.beans.migratetools
 
 import org.apache.log4j.Logger
-import org.shoukaiseki.excel.poi.ExcelBuild
-import org.shoukaiseki.excel.poi.ExcelBuildActionCall
-import psdi.util.MXApplicationException
+import org.shoukaiseki.webclient.beans.migratetools.common.AbstractMigrateImp
+import psdi.mbo.SqlFormat
+import psdi.server.MXServer
 import psdi.util.MXException
 import psdi.webclient.system.beans.DataBean
 import psdi.webclient.system.controller.UploadFile
-import java.io.ByteArrayInputStream
 import java.io.UnsupportedEncodingException
+import java.lang.reflect.Constructor
 import java.rmi.RemoteException
 
 /**
@@ -21,12 +21,12 @@ import java.rmi.RemoteException
 class ImportMigrateToolsDataBean : DataBean(){
 
     companion object {
-        val log: Logger = Logger.getLogger("org.shoukaiseki")
+        val logger: Logger = Logger.getLogger("org.shoukaiseki")
     }
 
     @Throws(MXException::class, RemoteException::class)
     override fun execute(): Int {
-        log.debug("ImportMigrateToolsDataBean.execute")
+        logger.debug("ImportMigrateToolsDataBean.execute")
         if (!this.clientSession.hasLongOpStarted()) {
         }
 
@@ -34,16 +34,49 @@ class ImportMigrateToolsDataBean : DataBean(){
             val file = this.app.get("importfile") as UploadFile
 
             val mboSet=this.app.appBean.mboSet
-            log.debug("mboname=${mboSet.name},appname=${this.app.app}")
+            logger.debug("mboname=${mboSet.name},appname=${this.app.app}")
 
             var fileContent = ""
 
             try {
                 fileContent = file.fileOutputStream.toString("UTF-8")
-                log.debug("fileContent=$fileContent")
-                println("fileContent=$fileContent")
+//                logger.debug("fileContent=$fileContent")
+//                println("fileContent=$fileContent")
+                logger.debug("appname=${this.app.app}")
+                this.creatingEvent!!.sourceControlInstance!!.dataBean!!.let{
+                    val alnSet=MXServer.getMXServer().getMboSet("ALNDOMAIN",MXServer.getMXServer().systemUserInfo)
+                    val sf=SqlFormat("domainid='ABSTRACTMIGRATEIMP' and value=:1")
+                    sf.setObject(1,"ALNDOMAIN","VALUE",app.app)
+                    alnSet.where=sf.format()
+                    alnSet.reset()
+                    val ami:AbstractMigrateImp
+                    if(alnSet.getMbo(0)!=null){
+                        val clazz=Class.forName(alnSet.getMbo(0).getString("DESCRIPTION"))
+                        val dc:Constructor<AbstractMigrateImp> = clazz.getDeclaredConstructor(*arrayOf<Class<*>>(DataBean::class.java, String::class.java)) as Constructor<AbstractMigrateImp>
+                        dc.isAccessible=true
+                        var amiTemp =dc.newInstance(*arrayOf<Any>(it,fileContent))
+                        if(amiTemp is AbstractMigrateImp){
+                            ami= amiTemp
+                        }else{
+                            logger.debug("${mbo.getString("CLASSNAME")} is not extends InterfaceTaskExecution")
+                            ami=AbstractMigrateImp(it,fileContent)
+                        }
+
+                    }else{
+                        ami=AbstractMigrateImp(it,fileContent)
+                    }
+                    ami.execute()
+
+                    try{
+                        alnSet.close()
+                    }catch (e:Exception){
+                    }
+                }
+                //ABSTRACTMIGRATEIMP
+
+
             } catch (var6: UnsupportedEncodingException) {
-                log.debug("Unsupported encoding exception!!!")
+                logger.debug("Unsupported encoding exception!!!")
                 var6.printStackTrace()
             }
 
@@ -58,10 +91,10 @@ class ImportMigrateToolsDataBean : DataBean(){
                 }else{
                     throw MXApplicationException("不支持导入功能","${appbean.javaClass.name} 没有继承 ExcelBuildActionCall 接口")
                 }
-                log.debug("excel import end")
+                logger.debug("excel import end")
                 this.clientSession.showMessageBox(this.clientSession.currentEvent, "ImportExcelDataBean", "导入成功", arrayOf())
             } catch (var6: UnsupportedEncodingException) {
-                log.error("导入出错",var6)
+                logger.error("导入出错",var6)
                 var6.printStackTrace()
                 throw MXApplicationException("excel","导入出错",var6)
             }

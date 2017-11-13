@@ -1,4 +1,4 @@
-package org.shoukaiseki.webclient.beans.migratetools;
+package org.shoukaiseki.webclient.beans.migratetools.app.configur;
 
 import org.jetbrains.annotations.NotNull;
 import org.shoukaiseki.webclient.beans.migratetools.common.AbstractMigrate;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * org.shoukaiseki.webclient.beans.migratetools.ConfigurMigrate <br>
+ * org.shoukaiseki.webclient.beans.migratetools.app.configur.ConfigurMigrate <br>
  *
  * @author 蒋カイセキ    Japan-Tokyo  2017-09-15 09:48:21<br>
  * ブログ http://shoukaiseki.blog.163.com/<br>
