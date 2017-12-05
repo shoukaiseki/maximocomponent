@@ -219,6 +219,10 @@ public class AddSubtabDocBean extends RegisterDocBean {
 
 
 ### 应用程序xml
+
+#### test2uploa003.xml
+解决子表未保存出现对话框字段红叉错误,添加子表绑定DataBean,调用dialog之前进行appbean.save操作
+
 ```Xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -248,7 +252,7 @@ public class AddSubtabDocBean extends RegisterDocBean {
 						<attachments id="1510298930496"/>
 						<textbox dataattribute="SITEID" id="maintab_attr6" inputmode="readonly"/>
 					</section>
-					<table id="table_showgia" label="子表" relationship="TEST2A">
+					<table beanclass="org.shoukaiseki.webclient.beans.subtabuploadattachments.SubtabDataBean" id="table_showgia" label="子表" relationship="TEST2A">
 						<defaultvalue dataattribute="TEST2ID" defaulttype="insert" fromattribute="TEST2ID" fromdatasrc="mainrecord" id="1369664492323"/>
 						<tablebody id="1508230861965">
 							<tablecol id="1510393207667" mxevent="toggledetailstate"/>
@@ -258,16 +262,16 @@ public class AddSubtabDocBean extends RegisterDocBean {
 							<tablecol dataattribute="description" id="1508230900682"/>
 							<tablecol dataattribute="docurls" id="1538230900682" inputmode="readonly"/>
 							<tablecol id="1510304896846" mxevent="subtabuploadattachments" mxevent_icon="img_attachments.gif"/>
+							<tablecol id="1512458857678" mxevent="toggledeleterow" type="event"/>
 						</tablebody>
 						<buttongroup id="1369664594114">
 							<pushbutton id="1369664594122" label="新建行" mxevent="addrow"/>
 						</buttongroup>
 						<tabledetails id="1508230861971">
-							<section id="1518230861971">
-							</section>
+							<section id="1518230861971"/>
 						</tabledetails>
 					</table>
-					<table id="lookdoc_table" label="子表附件" inputmode="readonly" relationship="DOCLINKS" parentdatasrc="table_showgia">
+					<table id="lookdoc_table" inputmode="readonly" label="子表附件" parentdatasrc="table_showgia" relationship="DOCLINKS">
 						<tablebody id="lookdoc_tablebody">
 							<tablecol dataattribute="document" id="lookdoc_table_tablebody_4" label="文档" type="openurl" urlattribute="weburl"/>
 							<tablecol dataattribute="docinfo.description" id="lookdoc_table_tablebody_6" label="描述" sortable="false"/>
@@ -275,8 +279,8 @@ public class AddSubtabDocBean extends RegisterDocBean {
 							<tablecol dataattribute="docversion" id="lookdoc_table_tablebody_5" label="文档版本"/>
 							<tablecol dataattribute="printthrulink" id="lookdoc_table_tablebody_9" label="打印"/>
 							<tablecol dataattribute="ownertable" id="lookdoc_table_tablebody_1" label="应用程序"/>
-							<tablecol filterable="false" hidden="false" id="lookdoc_table_tablebody_7" mxevent="linkproperties" mxevent_desc="附件属性" mxevent_icon="img_information.gif" sortable="false" type="event"/>
-							<tablecol filterable="false" hidden="false" id="lookdoc_table_tablebody_8" mxevent="instantdelete" mxevent_desc="删除行" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
+							<tablecol filterable="false" id="lookdoc_table_tablebody_7" mxevent="linkproperties" mxevent_desc="附件属性" mxevent_icon="img_information.gif" sortable="false" type="event"/>
+							<tablecol filterable="false" id="lookdoc_table_tablebody_8" mxevent="instantdelete" mxevent_desc="删除行" mxevent_icon="btn_delete.gif" sortable="false" type="event"/>
 						</tablebody>
 					</table>
 				</tab>
