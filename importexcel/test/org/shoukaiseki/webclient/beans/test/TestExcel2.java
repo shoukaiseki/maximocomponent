@@ -58,4 +58,9 @@ public class TestExcel2  implements ExcelBuildActionCall {
         ExcelBuild eb=new ExcelBuild(inputStream ,te);
         eb.readExcelContent();
     }
+
+    @Override
+    public void setImportFilename(@NotNull String name) {
+
+    }
 }

@@ -25,9 +25,20 @@ public class SkstestieAppBean2 extends AppBean
 
 MboSetRemote testimpexcelSet=null;
 
+    String excelfilename=null;
+
+    @Override
+    public void setImportFilename(@NotNull String name) {
+        this.excelfilename=name;
+    }
 
     @Override
     public void endTrigger(@NotNull ExcelTable<ExcelRow> list) throws MXException, RemoteException {
+        if(this.excelfilename.indexOf("电气")>-1){
+           //文件名包含电气的处理方式
+        }
+
+
         MboSetRemote msr=getMboSet();
         try {
             log.debug("app.onListTab()="+app.onListTab());
@@ -111,4 +122,5 @@ MboSetRemote testimpexcelSet=null;
 
     @Override
     public void startTrigger(@NotNull ExcelBuildConfig excelBuildConfig) throws MXException, RemoteException { }
+
 }

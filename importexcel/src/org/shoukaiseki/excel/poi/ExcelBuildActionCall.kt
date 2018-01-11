@@ -12,6 +12,11 @@ import java.rmi.RemoteException
 interface ExcelBuildActionCall {
 
     /**
+     * excel文件名,优先被执行
+     */
+    fun setImportFilename(name:String)
+
+    /**
      *  初始化excel表格数据列配置 位于哪个 sheet ,标题行数为几行
      *  <br>
      *  第一个 sheet 位置为0

@@ -96,4 +96,9 @@ MboSetRemote testimpexcelSet=null;
 
     @Override
     public void startTrigger(@NotNull ExcelBuildConfig excelBuildConfig) throws MXException, RemoteException { }
+
+    @Override
+    public void setImportFilename(@NotNull String name) {
+
+    }
 }

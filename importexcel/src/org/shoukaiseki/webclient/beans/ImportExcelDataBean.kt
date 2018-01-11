@@ -41,6 +41,7 @@ class ImportExcelDataBean : DataBean() {
                 var inputStream=ByteArrayInputStream(file.fileOutputStream.toByteArray());
                 val appbean=app.appBean
                 if(appbean is ExcelBuildActionCall){
+                    appbean.setImportFilename(file.fileName)
                     var eb= ExcelBuild(inputStream,appbean)
                     eb.readExcelContent()
                 }else{
