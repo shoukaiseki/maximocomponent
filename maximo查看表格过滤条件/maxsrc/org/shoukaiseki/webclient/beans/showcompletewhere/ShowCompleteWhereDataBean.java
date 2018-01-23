@@ -26,13 +26,13 @@ public class ShowCompleteWhereDataBean extends DataBean{
         super.initialize();
         log.setLevel(Level.DEBUG);
        log.debug("ShowCompleteWhereDataBean.initialize");
-        MboSetRemote mboSet = getMboSet();
         MboRemote mbo =null;
-        if(mboSet.isEmpty()){
-            mbo = mboSet.add();
+        if(getMboSet().isEmpty()){
+            mbo = getMboSet().add();
         }else{
-            mbo = mboSet.getMbo(0);
+            mbo = getMboSet().getMbo(0);
         }
+
 
         ControlInstance ci = this.creatingEvent.getSourceControlInstance();
 
@@ -40,12 +40,67 @@ public class ShowCompleteWhereDataBean extends DataBean{
             log.debug("ci.dataBean is null");
         }else{
             DataBean dataBean = ci.getDataBean();
-            String completeWhere = dataBean.getMboSet().getCompleteWhere();
-            if(mbo!=null){
-                mbo.setValue("COMPLETEWHERE",completeWhere,2L);
+            StringBuffer sb = new StringBuffer();
+            sb.append("mboname=").append(dataBean.getMboSet().getName());
+            sb.append("\n");
+            sb.append("completeWhere=").append(dataBean.getMboSet().getCompleteWhere());
+            sb.append("\n");
+            sb.append("\n");
+            sb.append("\n");
+
+            if(!isBlank(dataBean.getAppWhere())){
+                sb.append("appwhere=").append(dataBean.getAppWhere());
+                sb.append("\n");
             }
-            log.debug("completeWhere="+completeWhere);
+
+            if(!isBlank(dataBean.getUserWhere())){
+                sb.append("userwhere=").append(dataBean.getUserWhere());
+                sb.append("\n");
+            }
+
+            if(!isBlank(dataBean.getMboSet().getSelectionWhere())){
+                sb.append("mboset.selectionwhere=").append(dataBean.getMboSet().getSelectionWhere());
+                sb.append("\n");
+            }
+
+            if(!isBlank(dataBean.getMboSet().getWhere())){
+                sb.append("mboset.where=").append(dataBean.getMboSet().getWhere());
+                sb.append("\n");
+            }
+
+            MboSetRemote mboSet = dataBean.getMboSet();
+            MboRemote ownerMbo = mboSet.getOwner();
+            if(dataBean.getMboSet().getOwner()!=null){
+                sb.append("ownermbo=").append(ownerMbo.getName());
+                sb.append("\n");
+                String relationName = mboSet.getRelationName();
+                sb.append("relationname=").append(relationName);
+                sb.append("\n");
+                sb.append("relationinfo=").append(ownerMbo.getThisMboSet().getMboSetInfo().getRelationInfo(relationName).getSqlExpr());
+
+            }
+            if(mbo!=null){
+                mbo.setValue("COMPLETEWHERE",sb.toString(),2L);
+            }
+            log.debug(sb.toString());
         }
         setCurrentRecordData(mbo);
     }
+
+
+    /**
+     * 是否为空
+     * @param str
+     * @return
+     */
+    public boolean isBlank(String str){
+        if(str==null||str.isEmpty()){
+            return true;
+        }
+        if(str.trim().isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
 }
