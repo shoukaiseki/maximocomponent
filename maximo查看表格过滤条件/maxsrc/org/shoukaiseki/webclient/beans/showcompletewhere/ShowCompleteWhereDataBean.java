@@ -71,12 +71,21 @@ public class ShowCompleteWhereDataBean extends DataBean{
             MboSetRemote mboSet = dataBean.getMboSet();
             MboRemote ownerMbo = mboSet.getOwner();
             if(dataBean.getMboSet().getOwner()!=null){
+                log.debug("ownermbo="+ownerMbo.getName());
                 sb.append("ownermbo=").append(ownerMbo.getName());
                 sb.append("\n");
                 String relationName = mboSet.getRelationName();
+                log.debug("relationname="+relationName);
                 sb.append("relationname=").append(relationName);
                 sb.append("\n");
-                sb.append("relationinfo=").append(ownerMbo.getThisMboSet().getMboSetInfo().getRelationInfo(relationName).getSqlExpr());
+                log.debug("sql="+mbo.getMboSet("","",""));
+                if(ownerMbo.getThisMboSet().getMboSetInfo().getRelationInfo(relationName)!=null){
+                    sb.append("relationinfo=").append(ownerMbo.getThisMboSet().getMboSetInfo().getRelationInfo(relationName).getSqlExpr());
+                    sb.append("\n");
+                }else{
+                    sb.append("relationship=").append(mboSet.getRelationship());
+                    sb.append("\n");
+                }
 
             }
             if(mbo!=null){
