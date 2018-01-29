@@ -41,7 +41,7 @@ public class ShowCompleteWhereDataBean extends DataBean{
         }else{
             DataBean dataBean = ci.getDataBean();
             StringBuffer sb = new StringBuffer();
-            sb.append("mboname=").append(dataBean.getMboSet().getName());
+            sb.append("mboname=").append(dataBean.getMboSet().getMboSetInfo().getObjectName());
             sb.append("\n");
             sb.append("completeWhere=").append(dataBean.getMboSet().getCompleteWhere());
             sb.append("\n");
