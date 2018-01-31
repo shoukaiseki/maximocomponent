@@ -12,6 +12,23 @@
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/003.png)
 
 
+例如查看出库单中选择库房的过滤条件
+
+![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/004.png)
+
+过滤信息如下
+
+```Sql
+mboname=LOCATIONS
+completeWhere=((status not in ( '中断' , '停止使用' , '不活动' , '缺少' , '封存' , '取消' , '报废' ) and ((( 'XJM'  is null or  'XJM' ='') or (( 'XJM'  is not null or  'XJM'  !='') and siteid= 'XJM' ))   and type in ( '库房' ,  '承运人' ,  '员工' ,  '保存' ))) and ((siteid= 'XJM' )) and location in (select location from inventory where locations.siteid = inventory.siteid and locations.location = inventory.location and itemnum= '00600400090'  and status in ( '活动' ,  '暂挂折旧' ))) AND (rownum<=1000)
+
+
+ownermbo=MATUSETRANS
+relationname=__LOCATIONSSTORELOClist
+relationship=(status not in ( '中断' , '停止使用' , '不活动' , '缺少' , '封存' , '取消' , '报废' ) and ((( 'XJM'  is null or  'XJM' ='') or (( 'XJM'  is not null or  'XJM'  !='') and siteid= 'XJM' ))   and type in ( '库房' ,  '承运人' ,  '员工' ,  '保存' ))) and ((siteid= 'XJM' )) and location in (select location from inventory where locations.siteid = inventory.siteid and locations.location = inventory.location and itemnum= '00600400090'  and status in ( '活动' ,  '暂挂折旧' ))
+```
+
+
 ## 增加按钮标题
 
 
