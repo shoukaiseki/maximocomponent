@@ -44,6 +44,8 @@ houhou05 按钮点击
 
 ## java类 查看 maxsrc 目录	
 
+[maxsrc](https://github.com/shoukaiseki/maximocomponent/tree/master/maximo%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B5%8B%E8%AF%95/maxsrc)
+
 ## 建表/应用语句查看 resources 目录
 
-[resources](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B5%8B%E8%AF%95/resources?_blank)
+[resources](https://github.com/shoukaiseki/maximocomponent/tree/master/maximo%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B5%8B%E8%AF%95/resources)
