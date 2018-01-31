@@ -37,9 +37,11 @@ relationship=(status not in ( '中断' , '停止使用' , '不活动' , '缺少'
 
 ![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/006.png)
 
+上图字段帮助为加强版的效果,能看到很多信息 [下载地址](https://github.com/shoukaiseki/maximocomponent/blob/master/maximo%E5%AD%97%E6%AE%B5%E5%B8%AE%E5%8A%A9%E5%8A%A0%E5%BC%BA%E7%89%88/README.md)
+
 能够看出,班组字段是能看到绑定的domainid为'QXFXZB',也绑定了class
 
-检修单位字段却没有在数据库配置中绑定domainid,在类中设置了
+检修单位字段却没有在数据库配置中绑定domainid,而是在类中设置了
 
 这种情况下,我们可以用查看表格过滤条件组件去查看,效果如下
 
