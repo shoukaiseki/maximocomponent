@@ -46,4 +46,4 @@ houhou05 按钮点击
 
 ## 建表/应用语句查看 resources 目录
 
-[建表语句](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B5%8B%E8%AF%95/resources/createtable.sql)
+[resources](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%B5%8B%E8%AF%95/resources?_blank)
