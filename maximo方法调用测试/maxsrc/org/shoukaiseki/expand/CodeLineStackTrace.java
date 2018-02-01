@@ -24,7 +24,6 @@ public class CodeLineStackTrace {
             int lineNumber = stackTraceElement.getLineNumber();
             String fileName = stackTraceElement.getFileName();
             if(b){
-                sb.append("\tCodeLineStackTrace\t");
                 sb.append(className);
                 sb.append(".").append(methodName);
                 sb.append("(");
