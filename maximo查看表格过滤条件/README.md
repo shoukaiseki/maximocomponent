@@ -33,11 +33,11 @@ relationship=(status not in ( '中断' , '停止使用' , '不活动' , '缺少'
 
 检修单位字段,使用的是alndomain域,但是没有在数据库配置中绑定域名,而是在类中指定的,如下图查看字段信息
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/005.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/005.png)
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/006.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/006.png)
 
-上图字段帮助为加强版的效果,能看到很多信息 [下载地址](https://github.com/shoukaiseki/maximocomponent/blob/master/maximo%E5%AD%97%E6%AE%B5%E5%B8%AE%E5%8A%A9%E5%8A%A0%E5%BC%BA%E7%89%88/README.md)
+上图字段帮助为加强版的效果,能看到很多信息 [下载地址](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E5%AD%97%E6%AE%B5%E5%B8%AE%E5%8A%A9%E5%8A%A0%E5%BC%BA%E7%89%88/README.md)
 
 能够看出,班组字段是能看到绑定的domainid为'QXFXZB',也绑定了class
 
@@ -45,7 +45,7 @@ relationship=(status not in ( '中断' , '停止使用' , '不活动' , '缺少'
 
 这种情况下,我们可以用查看表格过滤条件组件去查看,效果如下
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/007.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/007.png)
 
 我们可以发现,domainid为 DA_JXDW
 
@@ -76,7 +76,7 @@ Insert into MAXMESSAGES (MSGKEY,MSGGROUP,VALUE,TITLE,DISPLAYMETHOD,OPTIONS,BUTTO
 
 表中只需要有个 COMPLETEWHERE(过滤条件) 字段即可
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/001.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/001.png)
 
 ## library.xml 增加
 ```Xml
