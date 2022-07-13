@@ -5,16 +5,16 @@
 
 列表初始图片
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/002.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/002.png)
 
 点击之后效果图
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/003.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/003.png)
 
 
 例如查看出库单中选择库房的过滤条件
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/004.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E6%9F%A5%E7%9C%8B%E8%A1%A8%E6%A0%BC%E8%BF%87%E6%BB%A4%E6%9D%A1%E4%BB%B6/img/004.png)
 
 过滤信息如下
 
