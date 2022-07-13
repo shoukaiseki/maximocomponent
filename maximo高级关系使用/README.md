@@ -2,15 +2,15 @@
 
 应用程序设计器里面的关系名
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/001.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/001.png)
 
 数据库配置中的关系配置,where条件为1=2,那么在查询是肯定是无数据的
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/002.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/002.png)
 
 我们来看最后页面显示的结果
 
-![image](https://raw.githubusercontent.com/shoukaiseki/maximocomponent/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/003.png)
+![image](https://gitee.com/shoukaiseki/maximocomponent/raw/master/maximo%E9%AB%98%E7%BA%A7%E5%85%B3%E7%B3%BB%E4%BD%BF%E7%94%A8/img/003.png)
 
 原因是,这个结果集所属的类是 psdi.app.workorder.virtual.ShowTasksSet 
 
